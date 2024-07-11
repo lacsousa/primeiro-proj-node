@@ -1,8 +1,15 @@
 import Appointment from "../models/Appointments";
 import { isEqual } from "date-fns";
 
-// Persistence <-> Repository <-> Route 
-class AppointmentsRepository { 
+// Persistence <-> Repository <-> Route
+
+
+interface CreateAppointmentDTO{
+    provider: string;
+    date: Date;
+}
+
+class AppointmentsRepository {
 
     private appointments: Appointment[];
 
@@ -10,8 +17,8 @@ class AppointmentsRepository {
         this.appointments = [];
     }
 
-    public create ( provider: string , date: Date ): Appointment {
-        const appointment = new Appointment(provider, date);
+    public create ( {provider, date}: CreateAppointmentDTO ): Appointment {
+        const appointment = new Appointment({ provider, date });
 
         this.appointments.push(appointment);
 
@@ -22,10 +29,10 @@ class AppointmentsRepository {
         const findAppointment =  this.appointments.find(
             appointment => isEqual(date, appointment.date));
 
-        return findAppointment || null;     
+        return findAppointment || null;
     }
 
-    public all(): Appointment[] { 
+    public all(): Appointment[] {
         return this.appointments;
     }
 }
