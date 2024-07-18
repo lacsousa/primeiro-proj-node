@@ -6,3 +6,9 @@
 - Install typeORM and PostgreSQL driver
 
     yarn add typeorm pg
+
+
+** Creating the tables
+
+    - yarn typeorm migration:create -n CreateAppointments
+    
