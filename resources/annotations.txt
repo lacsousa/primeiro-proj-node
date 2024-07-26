@@ -8,7 +8,13 @@
     yarn add typeorm pg
 
 
-** Creating the tables
+** Creating the tables ( Just works with the version  "typeorm": "^0.2.45")
 
     - yarn typeorm migration:create -n CreateAppointments
-    
+
+    -  yarn typeorm migration:run
+
+    * If you want to see all the migrations executed:
+        - yarn typeorm migration:show
+
+

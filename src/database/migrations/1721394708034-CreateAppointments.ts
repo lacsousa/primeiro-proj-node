@@ -1,9 +1,10 @@
-import {MigrationInterface, QueryRunner, TableColumn} from "typeorm";
+import {MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateAppointments1721394708034 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.createTable({
+        await queryRunner.createTable(
+            new Table({
             name: 'appointments',
             columns: [
                 {
@@ -22,8 +23,9 @@ export class CreateAppointments1721394708034 implements MigrationInterface {
                     type: 'timestamp with time zone',
                     isNullable: false,
                 }
-                ]
-        });
+            ]
+            })
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
