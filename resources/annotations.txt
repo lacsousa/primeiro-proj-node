@@ -3,12 +3,15 @@
 
     docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 
-- Install typeORM and PostgreSQL driver
 
-    yarn add typeorm pg
+- Install typeORM and PostgreSQL driver ( Just works with the version  "typeorm": "^0.2.45")
 
+    - yarn add typeorm@0.2.45
+    - yarn add pg
 
-** Creating the tables ( Just works with the version  "typeorm": "^0.2.45")
+- Its necessary to create manually the Database instance gostack_gobarber on the Dbeaver
+
+** Creating the tables
 
     - yarn typeorm migration:create -n CreateAppointments
 
@@ -17,4 +20,18 @@
     * If you want to see all the migrations executed:
         - yarn typeorm migration:show
 
+
+--------------------- NVM :  NodeJS -------------------------
+nvm alias default v22.4.1
+
+nvm use default
+
+
+--------------------- NVM :  NodeJS -------------------------
+
+-
+During the creation of the repositories pointing to the database
+Its necessary to install reflect-metadata
+
+- yarn add reflect-metadata
 
