@@ -1,3 +1,4 @@
+Tasks:
 
 - Create a PostgreSQL container
 
@@ -13,6 +14,8 @@
 
 ** Creating the tables
 
+** Tables
+    * Appointments
     - yarn typeorm migration:create -n CreateAppointments
 
     -  yarn typeorm migration:run
@@ -34,4 +37,13 @@ During the creation of the repositories pointing to the database
 Its necessary to install reflect-metadata
 
 - yarn add reflect-metadata
+
+
+** Tables
+* Users
+    - yarn typeorm migration:create -n CreateUsers
+
+    -  yarn typeorm migration:run
+
+
 
