@@ -45,5 +45,6 @@ Its necessary to install reflect-metadata
 
     -  yarn typeorm migration:run
 
+    - yarn typeorm migration:create -n AlterProviderFieldToProviderId
 
 

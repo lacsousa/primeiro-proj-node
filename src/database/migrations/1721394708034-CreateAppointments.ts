@@ -9,7 +9,7 @@ export class CreateAppointments1721394708034 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'varchar',
+                    type: 'uuid',
                     isPrimary: true,
                     generationStrategy: 'uuid',
                     default: 'uuid_generate_v4()',
