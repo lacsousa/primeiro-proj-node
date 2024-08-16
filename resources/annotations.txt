@@ -29,7 +29,6 @@ nvm alias default v22.4.1
 
 nvm use default
 
-
 --------------------- NVM :  NodeJS -------------------------
 
 -
@@ -48,3 +47,19 @@ Its necessary to install reflect-metadata
     - yarn typeorm migration:create -n AlterProviderFieldToProviderId
 
 
+** During the phase of Authentication
+
+    - Add lib uuidv4 -> yarn add uuidv4
+    - Add lib date-fns -> yarn add date-fns
+
+    // Install this library for to encrypt the password
+        - yarn add bcryptjs
+    // And then install
+        -  yarn add -D @types/bcryptjs
+
+    - yarn add jsonwebtoken
+        - yarn add -D @types/jsonwebtoken
+
+    -
+    * Go to site md5 online for to create a secret key
+    
