@@ -1,8 +1,8 @@
-import { getRepository } from "typeorm";
-import User from "../models/User";
-import { compare } from "bcryptjs";
-import { sign } from "jsonwebtoken";
-
+import { getRepository } from 'typeorm';
+import User from '../models/User';
+import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
+import authConfig from '../config/auth';
 
 interface Request {
     email:string;
@@ -32,9 +32,11 @@ class  AuthenticateUserService {
             throw new Error(`Incorrect email/password combination! `);
         }
 
-        const token = sign({}, '5f956917c2a24e1317695eaef0c86838',{
+        const { secret, expiresIn } = authConfig.jwt;
+
+        const token = sign({}, secret,{
             subject: user.id,
-            expiresIn: '1d'
+            expiresIn
         } );
         // Since the sign method doesn't return a promise, threre is no need to use await
         return{
