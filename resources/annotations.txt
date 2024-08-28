@@ -62,4 +62,10 @@ Its necessary to install reflect-metadata
 
     -
     * Go to site md5 online for to create a secret key
-    
+
+*** Avatars
+
+    - yarn typeorm migration:create -n AddAvatarFieldToUsers
+
+    - yarn add multer
+    - yarn add  -D @types/multer

@@ -56,4 +56,7 @@ typings/
 
 .DS_Store
 src/.DS_Store
+tmp/*
+!tmp/.gitkeep
+
 

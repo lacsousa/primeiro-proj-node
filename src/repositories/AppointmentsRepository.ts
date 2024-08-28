@@ -1,4 +1,4 @@
-import { EntityRepository, Repository } from "typeorm";
+import { EntityRepository, Repository } from 'typeorm';
 
 import Appointment from "../models/Appointments";
 // Persistence <-> Repository <-> Route
