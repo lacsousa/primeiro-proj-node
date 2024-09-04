@@ -1,10 +1,15 @@
 import 'reflect-metadata';
 
-import express from 'express';
+import express, {Request, Response, NextFunction } from 'express';
+// right after the import express
+import 'express-async-errors';
+
+
 import routes from './routes';
 import uploadConfig from './config/upload';
 
 import './database';
+import AppError from './errors/AppError';
 /*
     Some initial installations
 
@@ -29,10 +34,29 @@ import './database';
 const app = express();
 
 app.use(express.json());
-
-app.use('/files', express.static(uploadConfig.directory));
-
+app.use('/files', express.static(uploadConfig.directory)); //middleware
 app.use(routes);
+
+// After the creation this middleware it´s necessary to install the express-async-errors
+// because the express doesn´t catch errors of kind async
+
+// yarn add express-async-errors
+app.use(
+    (err: Error, request: Request, response: Response, next: NextFunction) => {
+        if (err instanceof AppError) {
+            return response.status(err.statusCode).json({
+                status: 'error',
+                message: err.message
+            });
+        }
+
+        console.log(err);
+
+        return response.status(500).json({
+            status: 'error',
+            message: 'Internal server error',
+        })
+});
 
 app.get('/', (request, response) => {
     return response.json({ message: 'Hello world!'});

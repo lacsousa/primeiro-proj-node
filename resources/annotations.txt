@@ -69,3 +69,10 @@ Its necessary to install reflect-metadata
 
     - yarn add multer
     - yarn add  -D @types/multer
+
+
+
+*** After the creation error middleware it´s necessary to install the express-async-errors,
+    because the express doesn´t catch errors of kind async
+
+    - yarn add express-async-errors
