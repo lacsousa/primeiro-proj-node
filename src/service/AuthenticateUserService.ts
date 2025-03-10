@@ -28,6 +28,8 @@ class  AuthenticateUserService {
             throw new AppError(`Incorrect email/password combination! `, 401);
         }
 
+        // user.password - Senha criptografada do banco
+        // password - Senha que o usuário tentou fazer login
         const passwordMatched = await compare(password, user.password);
 
         if (!passwordMatched) {

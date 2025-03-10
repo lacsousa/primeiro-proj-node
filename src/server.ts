@@ -1,8 +1,11 @@
 import 'reflect-metadata';
+// reflect metadata is a library that allows us to add metadata to our classes, properties, methods, etc.
+
 
 import express, {Request, Response, NextFunction } from 'express';
 // right after the import express
 import 'express-async-errors';
+import cors from 'cors';
 
 
 import routes from './routes';
@@ -29,10 +32,14 @@ import AppError from './errors/AppError';
         )
 
         yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+
+        yarn add cors
+        yarn add @types/cors -D
 */
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.directory)); //middleware
 app.use(routes);

@@ -1,8 +1,19 @@
 Tasks:
 
-- Create a PostgreSQL container
+- Create a PostgreSQL container using volume
 
-    docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+    * cleaning old volumes unnecessary
+
+        ➜  docker volume rm $(docker volume ls -qf dangling=true)
+
+    * Create a specific volume for postgres
+        ➜  docker volume ls
+
+        ➜  docker volume create postgres_data
+
+        ➜  docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d -v postgres_data:/var/lib/postgresql/data postgres
+
+        ➜  docker container ls -a
 
 
 - Install typeORM and PostgreSQL driver ( Just works with the version  "typeorm": "^0.2.45")
@@ -10,7 +21,7 @@ Tasks:
     - yarn add typeorm@0.2.45
     - yarn add pg
 
-- Its necessary to create manually the Database instance gostack_gobarber on the Dbeaver
+******* IMPORTANT !!!! Its necessary to create manually the Database instance gostack_gobarber on the Dbeaver. I don't know th reason, but it only works if you create the database first
 
 ** Creating the tables
 
